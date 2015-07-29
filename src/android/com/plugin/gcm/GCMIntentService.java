@@ -97,24 +97,31 @@ public class GCMIntentService extends GCMBaseIntentService {
 				defaults = Integer.parseInt(extras.getString("defaults"));
 			} catch (NumberFormatException e) {}
 		}
-		
-		NotificationCompat.Builder mBuilder =
+
+
+
+        NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle().bigText("This is a big text. This is a big text. This is a big text. This is a big text. This is a big text.");
+        NotificationCompat.Builder mBuilder =
 			new NotificationCompat.Builder(context)
 				.setDefaults(defaults)
 				.setSmallIcon(context.getApplicationInfo().icon)
 				.setWhen(System.currentTimeMillis())
-				.setContentTitle(extras.getString("title"))
+				.setContentTitle("3D3 Notification")
+                .setContentText("This is a big text. This is a big text. This is a big text. This is a big text. This is a big text.")
+                .setStyle(bigTextStyle)
 				.setTicker(extras.getString("title"))
+                .setSubText("Tap to view documentation about notifications. Tap to view documentation about notifications. Tap to view documentation about notifications")
 				.setContentIntent(contentIntent)
 				.setAutoCancel(true);
-
+				
+/*
 		String message = extras.getString("message");
 		if (message != null) {
 			mBuilder.setContentText(message);
 		} else {
 			mBuilder.setContentText("<missing message content>");
 		}
-
+*/
 		String msgcnt = extras.getString("msgcnt");
 		if (msgcnt != null) {
 			mBuilder.setNumber(Integer.parseInt(msgcnt));
