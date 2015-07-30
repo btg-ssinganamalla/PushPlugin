@@ -100,20 +100,20 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 
 
-        NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle().bigText("This is a big text. This is a big text. This is a big text. This is a big text. This is a big text.");
+        NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle().bigText(extras.getString("message"));
         NotificationCompat.Builder mBuilder =
 			new NotificationCompat.Builder(context)
 				.setDefaults(defaults)
 				.setSmallIcon(context.getApplicationInfo().icon)
 				.setWhen(System.currentTimeMillis())
-				.setContentTitle("3D3 Notification")
-                .setContentText("This is a big text. This is a big text. This is a big text. This is a big text. This is a big text.")
+				.setContentTitle(extras.getString("title"))
+                .setContentText(extras.getString("message"))
                 .setStyle(bigTextStyle)
 				.setTicker(extras.getString("title"))
-                .setSubText("Tap to view documentation about notifications. Tap to view documentation about notifications. Tap to view documentation about notifications")
 				.setContentIntent(contentIntent)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
 				.setAutoCancel(true);
-				
+
 /*
 		String message = extras.getString("message");
 		if (message != null) {
